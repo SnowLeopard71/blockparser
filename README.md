@@ -1,3 +1,8 @@
+Simple changes to original blockparser replacing Litecoin support with Mincoin.
+
+ORIGINAL README:
+
+
 blockparser
 ===========
 

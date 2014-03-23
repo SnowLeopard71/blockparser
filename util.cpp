@@ -428,8 +428,8 @@ bool addrToHash160(
 
         uint8_t data[1+kRIPEMD160ByteSize];
         memcpy(1+data, hash160, kRIPEMD160ByteSize);
-        #if defined(LITECOIN)
-            data[0] = 48;
+        #if defined(MINCOIN)
+            data[0] = 50;
         #else
             data[0] = 0;
         #endif
@@ -725,10 +725,11 @@ uint64_t getBaseReward(
     uint64_t h
 )
 {
-    static const uint64_t kCoin = 100000000;
-    uint64_t reward = (50 * kCoin);
-    uint64_t shift = (h/210000);
-    reward >>= shift;
-    return reward;
+    // static const uint64_t kCoin = 100000000;
+    // uint64_t reward = (50 * kCoin);
+    // uint64_t shift = (h/210000);
+    // reward >>= shift;
+    // return reward;
+    return 200000000;
 }
 
