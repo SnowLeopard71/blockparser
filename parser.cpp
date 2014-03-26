@@ -515,7 +515,9 @@ static bool buildBlock(
 {
     static const uint32_t expected =
     #if defined(MINCOIN)
-        0x2c214263
+        0x2c214263;
+    static const uint32_t expected_old =
+	0xdbb6c0fb
     #else
         0xd9b4bef9
     #endif
@@ -527,8 +529,13 @@ static bool buildBlock(
     }
 
     LOAD(uint32_t, magic, p);
+    #if defined(MINCOIN)
+    // if(unlikely(expected!=magic) && unlikely(expected_old!=magic)) {
+    if(unlikely(expected!=magic && expected_old!=magic)) {
+    #else
     if(unlikely(expected!=magic)) {
-        //printf("end of map, reason : magic is fucked %d away from EOF\n", (int)(e-p));
+    #endif
+        printf("end of map, reason : magic is fucked %d away from EOF\n", (int)(e-p));
         return true;
     }
 
